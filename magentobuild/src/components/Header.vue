@@ -1,9 +1,6 @@
 <template>
-  <header class="">
-    <img alt="Favorite Marvel Hero Magento" src="" width="" />
-    <span class="">
-      Magento | We are just pawns in his world
-    </span>
+  <header class="container">
+    <h1>My Marvel Hero</h1>
+    <p>View your favorite Marvel heros</p>
   </header>
-  <template></template
-></template>
+</template>
