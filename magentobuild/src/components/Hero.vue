@@ -1,7 +1,7 @@
 <template>
   <div class="hero-wrapper">
     <div class="hero-content">
-      <div class="heroes-list" v-for="hero in heroes" :key="hero.id">
+      <div class="heroes-list">
         <div class="hero-name">
           <h2>{{ hero.name }}</h2>
         </div>
@@ -22,6 +22,7 @@
               <button @click="addHeroToFavList(hero)">
                 Add character to favorites
               </button>
+              <button @click="randomHeroDetail(hero.id)">Random</button>
             </div>
           </div>
           <!-- <div class="favorite-hero">
@@ -41,27 +42,32 @@
 <script>
 export default {
   name: "Hero",
-  props: ["heroes"],
+  props: ["heroes", "hero"],
   data() {
     return {
       // to get the heroes added, I need to define the favHeroes array
-      favHeroes: [],
+      favHeroes: this.$store.state.favHeroes,
     };
   },
   methods: {
     addHeroToFavList: function(hero) {
+      console.log("hero", hero);
       // if I clicked the same hero twice, the hero should be added one time, not double.
       // before add the hero to the favHeroes, I need to check the favHeroes, which it is existed or not in favHeroes
       if (this.favHeroes.includes(hero) === false) {
         // if the added hero is new one, it will be added to  favHeroes
-        this.favHeroes.push(hero);
+        // this.favHeroes.push(hero);
+        this.$store.state.favHeroes.push(hero);
       } else {
         // else, it means it's already added to favHeroes.
         console.log("This Hero is already added to your favorite list");
       }
       // to show the favHeroes on 'Fav Heros', I needed to pass the favHeroes to parent component(App.vue)
       // in this case, we use the this.$emit
-      this.$emit("favHeroes", this.favHeroes);
+      // this.$emit("favHeroes", this.favHeroes);
+    },
+    randomHeroDetail: function(hero) {
+      this.$emit("randomHero", hero);
     },
   },
 };
