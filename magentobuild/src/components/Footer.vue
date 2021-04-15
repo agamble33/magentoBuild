@@ -1,5 +1,9 @@
 <template>
-  <Footer>
-    <p>Created by Tony Gamble</p>
-  </Footer>
+  <p>Created by Tony Gamble</p>
 </template>
+
+<script>
+export default {
+  name: "Footer",
+};
+</script>
